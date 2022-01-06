@@ -1,0 +1,171 @@
+$primary-color: #FFF
+$Secondary-Color: #20c997
+$text-color: #777
+$bg-color: #000
+$container-width: 1170px
+
+@mixin flex-center()
+    display: flex
+    align-items: center
+    justify-content: center
+
+@mixin container()
+    max-width: $container-width
+    padding: 1.5rem 0
+    margin: 0 auto
+
+@mixin bg-img($img)
+    background-image: url('../img/#{$img}')
+    background-size: 100%
+    background-position: center
+    background-repeat: no-repeat
+    filter: grayscale(100%)
+    transition: .6s
+
+    &:hover
+        background-size: 110%
+        filter: grayscale(0%)
+        background-image: linear-gradient(rgba(0,0,0, .5) rgba(0,0,0, .5), url('../img/#{$img}'))
+        cursor: pointer
+
+@mixin mobile()
+    @media (max-width:425px)
+        @content 
+
+*
+    font-family: 'Josefin-sans'
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+
+body
+    background-color: $bg-color
+    color: $text-color
+
+    a
+        color: $text-color
+        text-decoration: none
+        transition: .4s
+
+    ul
+        list-style: none
+        color: $Secondary-Color
+
+.header
+    display: flex
+    justify-content: space-between
+    @include container()
+    @include mobile()
+     padding: 1.1rem
+
+    &-brand
+        color: $primary-color
+        font-size: 3rem
+
+    &-navbar
+
+        ul
+            height: 100%
+            @include flex-center()
+            @include mobile()
+            display: none
+            color: $Secondary-Color
+
+            li
+                margin: 0 1rem
+                text-transform: uppercase
+                font-size: .8rem
+
+                .active
+                    color: $Secondary-Color
+                a
+
+                  &:hover
+                    color: $Secondary-Color
+
+    &-social-media
+        ul
+            @include flex-center()
+            height: 100%
+
+            @include mobile()
+            display: none
+
+            li
+                margin: 0 1rem 
+
+                a
+                  color: $primary-color
+
+.gallery
+    @include flex-center()
+    @include container()
+    flex-wrap: wrap
+    justify-content: space-between
+    padding: 0
+
+    @include mobile()
+   
+    &-card //gallery-card
+        width: 31%
+        height: 400px
+        margin-bottom: 4%
+        @include flex-center()
+        flex-direction: column
+        color: $primary-color
+
+        @include mobile()
+            width:90%
+            margin-bottom: 100%
+
+        &-title
+            font-size: 2rem
+            font-weight: 300
+            margin-bottom: 1rem
+
+        &-btn
+            padding: .6rem 2rem
+            border: 2px solid $primary-color
+            color: $primary-color
+            font-weight: 400
+            text-transform: uppercase
+            letter-spacing: 1px
+
+            &:hover
+                background-color: $primary-color
+                color: $bg-color
+
+    #card-1
+        @include bg-img('animais.jpg')
+
+    #card-2
+        @include bg-img('arquitetura.jpg')
+
+    #card-3
+        @include bg-img('cidade.jpg')
+
+    #card-4
+        @include bg-img('decoracao.jpg')
+
+    #card-5
+        @include bg-img('esportes.jpg')
+
+    #card-6
+        @include bg-img('natureza.jpg')
+
+    #card-7
+        @include bg-img('paisagem.jpg')
+
+    #card-8
+        @include bg-img('pessoas.jpg')
+
+    #card-9
+        @include bg-img('refeicoes.jpg')
+
+footer
+    text-align: center
+    padding-top: 2rem
+
+span
+    font-weight: bold
+    color: $Secondary-Color
